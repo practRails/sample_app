@@ -8,11 +8,15 @@ describe "StaticPages" do
    visit '/static_pages/home'
    page.should have_selector('h1', :text => 'Sample App')
   end
-  it "debe contener el título Home" do
+  it "debe contener el título básico" do
    visit '/static_pages/home'
    page.should have_selector('title', 
-          :text => 'Ruby on Rails Tutorial Sample App | Home')
-  end 
+          :text => 'Ruby on Rails Tutorial Sample App')
+  end
+  it "no tiene un título por defecto" do
+   visit '/static_pages/home'
+   page.should_not have_selector('title',:text => '| Home') 
+  end
  end
 
  describe "Help page" do
